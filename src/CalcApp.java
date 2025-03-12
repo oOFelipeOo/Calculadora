@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class CalcApp {
     public static void main(String[] args) {
 
         Scanner inputNum = new Scanner(System.in);
