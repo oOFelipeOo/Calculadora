@@ -1,36 +1,42 @@
 import java.util.Scanner;
 
-public class CalcApp {
+public abstract class CalcApp extends Operators {
     public static void main(String[] args) {
 
-        Scanner inputNum = new Scanner(System.in);
-        System.out.println("Digite o primeiro número: ");
-        double num1 = inputNum.nextDouble();
-        System.out.println("Digite o segundo número: ");
-        double num2 = inputNum.nextDouble();
-        System.out.println("Digite a operação (+, -, *, /): ");
-        char operator = inputNum.next().charAt(0);
-        inputNum.close();
-        double result;
+        Scanner input = new Scanner(System.in);
+        Operators operation;
+        double equals = 0;
 
-        switch (operator) {
+        System.out.println("Digite o primeiro número: ");
+        double num1 = input.nextDouble();
+
+        System.out.println("Digite a operação (+, -, *, /): ");
+        char operator = input.next().charAt(0);
+
+        System.out.println("Digite o segundo número: ");
+        double num2 = input.nextDouble();
+
+        input.close();
+
+        operation = new Operators();
+
+            switch (operator) {
             case '+':
-                result = num1 + num2;
+                equals = operation.addition(num1, num2);
                 break;
             case '-':
-                result = num1 - num2;
+                equals = operation.subtraction(num1, num2);
                 break;
             case '*':
-                result = num1 * num2;
+                equals = operation.multiplication(num1, num2);
                 break;
             case '/':
-                result = num1 / num2;
+                equals = operation.division(num1, num2);
                 break;
             default:
-                System.out.println("Operação inválida.");
-                return;
+                System.out.println("Operação inválida!");
         }
 
-        System.out.println(num1+" "+operator+" "+num2+": "+result);
+        System.out.println(num1+" "+operator+" "+num2+" = " + equals);
     }
 }
